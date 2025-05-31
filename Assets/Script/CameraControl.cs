@@ -9,8 +9,12 @@ public class CameraControl : MonoBehaviour
 
     public float rotX = 60f; // sað-sol bakýþ limiti
     public float rotY = 90f; // aþaðý-yukarý bakýþ limiti
-    
 
+
+    private void Start()
+    {
+        Cursor.lockState = CursorLockMode.Locked;   
+    }
     void Update()
     {
         rotationX += Input.GetAxis("Mouse Y") * -1 * sensitivity;
@@ -20,5 +24,7 @@ public class CameraControl : MonoBehaviour
         rotationY = Mathf.Clamp(rotationY, -rotY, rotY);
         
         transform.localEulerAngles = new Vector3 (rotationX, rotationY, 0);
+
+
     }
 }
